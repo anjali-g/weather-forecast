@@ -1,5 +1,5 @@
-/* GetLocation class returns location
- * of a CITY.
+/* 
+ * Calling Google geocoding api and returns the geographic coordinates to the calling class
  * */
 package com.anjali.servlet;
 
