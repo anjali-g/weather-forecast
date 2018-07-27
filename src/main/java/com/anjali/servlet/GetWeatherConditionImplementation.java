@@ -1,7 +1,6 @@
 /*
- * Implementation of GetWeatherCondition interface;
- * GetWeatherConditionImplementation is making a get 
- * request to darksky's forecast API for reading weather conditions
+ * An implementation for GetWeatherCondition. 
+ * Calling Dark Skpy api for weather conditions and returns it to the GetWeatherConditionsCall class
  */
 package com.anjali.servlet;
 
