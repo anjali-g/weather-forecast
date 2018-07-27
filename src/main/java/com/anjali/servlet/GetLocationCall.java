@@ -1,4 +1,7 @@
-//Return city location to the index.js file
+/*
+* Reads user input for city from the request parameters and passes it to GetLocation class
+* GetLocation returns geographic coordinates which this class returns to client
+*/
 package com.anjali.servlet;
 
 import java.io.IOException;
