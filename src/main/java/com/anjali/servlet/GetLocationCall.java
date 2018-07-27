@@ -1,3 +1,4 @@
+//Return city location to the index.js file
 package com.anjali.servlet;
 
 import java.io.IOException;
@@ -14,8 +15,8 @@ public class GetLocationCall extends HttpServlet {
 	GetLocation getLocationInstance = new GetLocation();
 
 	/*
-	 * calling darkSky forecast API to fetch current weather conditions for the next
-	 * week
+	 * reads user input for city and passes to GetLocation class 
+	 * which returns city location
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,6 +39,7 @@ public class GetLocationCall extends HttpServlet {
 		}
 	}
 
+	//Validating city value
 	private boolean validate(String city) {
 		return city != "";
 	}

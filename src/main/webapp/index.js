@@ -82,8 +82,9 @@ $(document).ready(function() {
 		var date = new Date(time*1000);
 		//getting the date
 		date = date.toDateString();
+		date  = date.split(" ");
 		//reading the day and returning 
-		var day = date.split(" ")[0];
+		var day = date[0] + ", " + date[1] + " " + date[2] + ", " + date[3];
 		return day;
 	}
 	
@@ -91,7 +92,7 @@ $(document).ready(function() {
 	 * dataPoint object for displaying in the graph */ 
 	function getData(data) {
 		var dataPoint = [];
-		for(var i=0; i<5; i++) {
+		for(var i=0; i<8; i++) {
 			dataPoint.push({
 				label: getDayFromTime(data[i].time),
 				y: [data[i].temperatureMin, data[i].temperatureMax],
@@ -105,6 +106,7 @@ $(document).ready(function() {
 	function createGraph(responseJson) {
 		var dataPoints = getData(responseJson.data);
 		chart = new CanvasJS.Chart("weatherChart", {
+			animationEnabled: true,
 			axisY: {
 				title: "Temperature in Fahrenheit",
 				maximum: 120,

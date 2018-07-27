@@ -31,14 +31,16 @@ public class GetLocationCallTest {
 		when(request.getParameter("city")).thenReturn("Seattle");
 		
 	}
-    
+    /*
+     * Test for validating user input value for CITY
+     */
   	@Test
   	public final void testCityValidationException() throws ServletException, IOException {
   		when(request.getParameter("city")).thenReturn("");
 		subject.doGet(request, response);
   		verify(response).sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid city");
   	}
-
+ 
 	/**
 	 * Test method for doGet method
 	 */

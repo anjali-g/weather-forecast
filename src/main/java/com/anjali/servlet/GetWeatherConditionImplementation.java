@@ -1,3 +1,8 @@
+/*
+ * Implementation of GetWeatherCondition interface;
+ * GetWeatherConditionImplementation is making a get 
+ * request to darksky's forecast API for reading weather conditions
+ */
 package com.anjali.servlet;
 
 import java.io.BufferedReader;
@@ -15,7 +20,7 @@ import com.anjali.common.GetWeatherCondition;
 public class GetWeatherConditionImplementation implements GetWeatherCondition{
 
 	// declaring a constant key and initializing with the secret Key
-	private static final String key = "277e4cd6917c4b96f781beec1bf7ca45";
+	private static final String key = "******************************";
 
 	//read response data and store into a String
 	private String readResponseData(HttpURLConnection connection)
@@ -41,7 +46,7 @@ public class GetWeatherConditionImplementation implements GetWeatherCondition{
 		return new URL(url);
 	}
 
-
+	//making the get request for fetching weather conditions
 	public String getWeatherConditions(double latitude, double longitude) throws Exception{
 		try {
 			URL requestUrl = getUrl(latitude, longitude);

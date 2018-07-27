@@ -1,3 +1,8 @@
+/*
+ * Reads location of a city i.e. latitude and longitude;
+ * Passes the parameters to GetWeatherConditionImplementation;
+ * Finally send backs to the index.js file the weather conditions
+ */
 package com.anjali.servlet;
 
 import java.io.IOException;

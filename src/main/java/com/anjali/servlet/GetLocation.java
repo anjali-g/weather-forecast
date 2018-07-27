@@ -1,3 +1,6 @@
+/* GetLocation class returns location
+ * of a CITY.
+ * */
 package com.anjali.servlet;
 
 import java.io.BufferedReader;
@@ -12,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 class GetLocation {
 
-	//read response data and store into a String
+	//read response data and return in String format
 	private String readResponseData(HttpURLConnection connection)
 			throws UnsupportedEncodingException, IOException {
 		
@@ -28,12 +31,13 @@ class GetLocation {
 		
 	}
 	
-	// generate api url using key, latitude and longitude
+	// generate url for fetching location of a city
 	private URL getUrl(String city) throws MalformedURLException {
 		String url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city;
 		return new URL(url);
 	}
 
+	//get call to googleapis for fetching city location
 	protected String getLocation(String city) throws Exception {
 		try {
 			URL requestUrl = getUrl(city);
@@ -43,7 +47,7 @@ class GetLocation {
 			connection.setRequestMethod("GET");
 			connection.setRequestProperty("Accept", "application/json");
 			if(connection.getResponseCode() != HttpServletResponse.SC_OK) {
-				throw new Exception("Failed to fetch weather details " + connection.getResponseCode());
+				throw new Exception("Failed to fetch city location " + connection.getResponseCode());
 			}
 			return readResponseData(connection);
 		} catch (Exception e) {
