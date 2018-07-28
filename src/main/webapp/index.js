@@ -141,20 +141,26 @@ $(document).ready(function() {
 		var longitude = location.lng;
 		$.get('GetWeatherConditions/',{latitude:latitude,longitude:longitude},
 				function(responseText) { 
+			$('#errorId').text("");
 			var responseJson = JSON.parse(responseText).daily;
 			createGraph(responseJson);
+		}).fail(function(err) {
+			$('#errorId').text(err.statusText);
+			validate("");
 		});
 	}
 	
-	function validateCity(city) {
+	function validate(value) {
 		//validation for city input
-		if(city === "") {
+		if(value === "") {
     		$('#errorId').text("Invalid Location");
     		$('#weatherChart').hide();
+    		$('#formattedLocation').hide();
     		return false;
 		} else {
 			$('#weatherChart').show();
 			$('#errorId').text("");
+			$('#formattedLocation').show();
 			return true;
 		}
 	}
@@ -163,13 +169,23 @@ $(document).ready(function() {
 	 * reading the input city and fetching its location
 	*/
     $('#btnSubmit').click(function(event) {
-    	var city = $('#city').val();
-    	if(validateCity(city)) {
+    	var city = $('#city').val().trim();
+    	if(validate(city)) {
     		//fetching location object for the city which has latitude and longitude
     		$.get('GetLocation/',{city:city},
     				function(responseText) { 
-    			var location = JSON.parse(responseText).results[0].geometry.location;
-    			getWeatherForLocation(location);
+    			var response = JSON.parse(responseText);
+    			if(response.status !== "OK") {
+    				validate("");
+    			} else {
+    				$('#errorId').text("");
+    				$('#formattedLocation').text(response.results[0].formatted_address);
+        			var location = response.results[0].geometry.location;
+        			getWeatherForLocation(location);
+    			}
+    		}).fail(function(err) {
+    			$('#errorId').text("Location" + err.responseText);
+    			validate("");
     		});
     	}
     	

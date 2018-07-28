@@ -1,5 +1,0 @@
-com\anjali\common\GetWeatherCondition.class
-com\anjali\servlet\GetWeatherConditionsCall.class
-com\anjali\servlet\GetLocationCall.class
-com\anjali\servlet\GetWeatherConditionImplementation.class
-com\anjali\servlet\GetLocation.class

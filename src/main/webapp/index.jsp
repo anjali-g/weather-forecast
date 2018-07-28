@@ -26,7 +26,9 @@
 			</form>	
 			<p id="errorId"></p>
  		</div>
+ 		<div id="formattedLocation" style="text-align:center"></div>
+	
  	</div>
-	<div id="weatherChart" style="height: 300px; width: 100%;"></div>
+ 	<div id="weatherChart" style="height: 300px; width: 100%;"></div>
 </body>
 </html>

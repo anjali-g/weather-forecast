@@ -1,6 +1,6 @@
 /*
  * An implementation for GetWeatherCondition. 
- * Calling Dark Skpy api for weather conditions and returns it to the GetWeatherConditionsCall class
+ * Calling Dark Sky api for weather conditions and returns it to the GetWeatherConditionsCall class
  */
 package com.anjali.servlet;
 
@@ -19,7 +19,7 @@ import com.anjali.common.GetWeatherCondition;
 public class GetWeatherConditionImplementation implements GetWeatherCondition{
 
 	// declaring a constant key and initializing with the secret Key
-	private static final String key = "******************************";
+	private static final String key = "********************************";
 
 	//read response data and store into a String
 	private String readResponseData(HttpURLConnection connection)

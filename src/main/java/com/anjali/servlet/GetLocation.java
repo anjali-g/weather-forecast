@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,8 +33,8 @@ class GetLocation {
 	}
 	
 	// generate url for fetching location of a city
-	private URL getUrl(String city) throws MalformedURLException {
-		String url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city;
+	private URL getUrl(String city) throws MalformedURLException, UnsupportedEncodingException {
+		String url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + URLEncoder.encode(city, "UTF-8");
 		return new URL(url);
 	}
 
@@ -51,7 +52,7 @@ class GetLocation {
 			}
 			return readResponseData(connection);
 		} catch (Exception e) {
-			throw new Exception(e.getCause());
+			throw e;
 		}
 	}
 
